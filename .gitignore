@@ -32,8 +32,9 @@ build/
 ### VS Code ###
 .vscode/
 
-/docker/es/**
-/docker/postgres/**
-/docker/standalone-logs/**
-/docker/zookeeper/**
+/docker/es/*
+/docker/postgres/*
+/docker/standalone-logs/*
+/docker/zookeeper/*
+/docker/mysql/data/*
 
