@@ -1,0 +1,14 @@
+server:
+  port: 8801
+
+spring:
+  profiles:
+    active: dev
+  config:
+    import:
+      - optional:nacos:demo.yaml?refreshEnabled=true
+  cloud:
+    nacos:
+      config:
+        namespace: a13fefbe-13fa-4a28-834c-704627a169ef
+      server-addr: 127.0.0.1:8848
