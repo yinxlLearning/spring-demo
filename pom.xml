@@ -32,6 +32,31 @@
         <spring-cloud-alibaba.version>2023.0.3.2</spring-cloud-alibaba.version>
     </properties>
     <dependencies>
+        <!-- shedlock依赖 -->
+        <dependency>
+            <groupId>net.javacrumbs.shedlock</groupId>
+            <artifactId>shedlock-spring</artifactId>
+            <version>4.23.0</version>
+        </dependency>
+        <dependency>
+            <groupId>net.javacrumbs.shedlock</groupId>
+            <artifactId>shedlock-provider-jdbc-template</artifactId>
+            <version>4.23.0</version>
+        </dependency>
+
+        <!-- sql -->
+        <!-- Spring JDBC 核心功能，提供 JdbcTemplate、NamedParameterJdbcTemplate 等工具类 -->
+        <!-- 默认的数据库连接池（性能优异） -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.33</version>
+        </dependency>
+
         <!-- 服务配置 -->
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
