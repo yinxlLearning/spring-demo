@@ -5,12 +5,12 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-@Component
+// @Component
 @Slf4j
 public class NacosDemo {
-    @Value("${user.name}")
+    // @Value("${user.name}")
     private String userName;
-    @Value("${user.age}")
+    // @Value("${user.age}")
     private String userAge;
 
     @PostConstruct

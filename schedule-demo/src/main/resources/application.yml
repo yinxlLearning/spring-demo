@@ -1,17 +1,7 @@
 server:
-  port: 8801
+  port: 8802
 
 spring:
-  profiles:
-    active: dev
-  config:
-    import:
-      - optional:nacos:demo.yaml?refreshEnabled=true
-  cloud:
-    nacos:
-      config:
-        namespace: a13fefbe-13fa-4a28-834c-704627a169ef
-      server-addr: 127.0.0.1:8848
   datasource:
     url: jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&characterEncoding=utf-8&useSSL=false
     # springboot 层面的通用数据库连接配置，无论使用哪种连接池，springboot都会优先读取这一层的username/password

@@ -2,103 +2,60 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.4.11</version>
-        <relativePath/> <!-- lookup parent from repository -->
-    </parent>
     <groupId>com.yinxl.learning</groupId>
     <artifactId>spring-demo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+
+    <!-- 用于人类可读的项目名称 -->
     <name>spring-demo</name>
+    <!-- 项目简短说明，用于展示或文档说明 -->
     <description>spring-demo</description>
+    <!-- 项目的主页地址，或者官网 -->
     <url/>
+    <!-- 指定项目的开源协议或使用许可 -->
     <licenses>
         <license/>
     </licenses>
+    <!-- 项目的开发者信息 -->
     <developers>
         <developer/>
     </developers>
-    <scm>
-        <connection/>
-        <developerConnection/>
-        <tag/>
-        <url/>
-    </scm>
+    <!-- <scm> -->
+    <!--     &lt;!&ndash; 项目源码浏览地址（给人看的） &ndash;&gt; -->
+    <!--     <url>https://github.com/yinxl-dev/schedule-demo</url> -->
+    <!--     &lt;!&ndash; 匿名只读连接地址（给 CI / 用户克隆用） &ndash;&gt; -->
+    <!--     <connection>scm:git:git://github.com/yinxl-dev/schedule-demo.git</connection> -->
+    <!--     &lt;!&ndash; 开发者连接地址（有写权限的开发者用） &ndash;&gt; -->
+    <!--     <developerConnection>scm:git:ssh://git@github.com/yinxl-dev/schedule-demo.git</developerConnection> -->
+    <!--     &lt;!&ndash; 指定当前发布对应的标签（通常自动由 Maven Release Plugin 生成） &ndash;&gt; -->
+    <!--     <tag>v1.0.0</tag> -->
+    <!-- </scm> -->
+
+    <!-- 指定当前项目为父级项目（聚合器），只起到管理作用，不会生成 jar/war。 -->
+    <packaging>pom</packaging>
+
+    <!-- 声明该项目包含的子模块（目录名）。 -->
+    <modules>
+        <module>nacos-demo</module>
+        <module>schedule-demo</module>
+    </modules>
+
     <properties>
         <java.version>17</java.version>
         <spring-cloud.version>2024.0.1</spring-cloud.version>
         <spring-cloud-alibaba.version>2023.0.3.2</spring-cloud-alibaba.version>
+        <spring-boot-dependency.version>3.4.5</spring-boot-dependency.version>
     </properties>
-    <dependencies>
-        <!-- shedlock依赖 -->
-        <dependency>
-            <groupId>net.javacrumbs.shedlock</groupId>
-            <artifactId>shedlock-spring</artifactId>
-            <version>4.23.0</version>
-        </dependency>
-        <dependency>
-            <groupId>net.javacrumbs.shedlock</groupId>
-            <artifactId>shedlock-provider-jdbc-template</artifactId>
-            <version>4.23.0</version>
-        </dependency>
-
-        <!-- sql -->
-        <!-- Spring JDBC 核心功能，提供 JdbcTemplate、NamedParameterJdbcTemplate 等工具类 -->
-        <!-- 默认的数据库连接池（性能优异） -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-jdbc</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.33</version>
-        </dependency>
-
-        <!-- 服务配置 -->
-        <dependency>
-            <groupId>com.alibaba.cloud</groupId>
-            <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
-        </dependency>
-
-        <!-- 服务发现 -->
-        <dependency>
-            <groupId>com.alibaba.cloud</groupId>
-            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
-        </dependency>
-
-        <!-- 基础依赖 -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-devtools</artifactId>
-            <scope>runtime</scope>
-            <optional>true</optional>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-configuration-processor</artifactId>
-            <optional>true</optional>
-        </dependency>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <optional>true</optional>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot-dependency.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
             <dependency>
                 <groupId>com.alibaba.cloud</groupId>
                 <artifactId>spring-cloud-alibaba-dependencies</artifactId>
@@ -117,36 +74,21 @@
     </dependencyManagement>
 
     <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <annotationProcessorPaths>
-                        <path>
-                            <groupId>org.springframework.boot</groupId>
-                            <artifactId>spring-boot-configuration-processor</artifactId>
-                        </path>
-                        <path>
-                            <groupId>org.projectlombok</groupId>
-                            <artifactId>lombok</artifactId>
-                        </path>
-                    </annotationProcessorPaths>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <excludes>
-                        <exclude>
-                            <groupId>org.projectlombok</groupId>
-                            <artifactId>lombok</artifactId>
-                        </exclude>
-                    </excludes>
-                </configuration>
-            </plugin>
-        </plugins>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.11.0</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <version>${spring-boot-dependency.version}</version>
+                </plugin>
+
+            </plugins>
+        </pluginManagement>
     </build>
 
 </project>

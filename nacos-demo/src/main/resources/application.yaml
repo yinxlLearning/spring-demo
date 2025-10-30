@@ -1,0 +1,25 @@
+server:
+  port: 8801
+
+spring:
+  profiles:
+    active: dev
+  config:
+    import:
+      - optional:nacos:demo.yaml?refreshEnabled=true
+  cloud:
+    nacos:
+      config:
+        namespace: a13fefbe-13fa-4a28-834c-704627a169ef
+      server-addr: 127.0.0.1:8848
+#  datasource:
+#    url: jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&characterEncoding=utf-8&useSSL=false
+#    # springboot 层面的通用数据库连接配置，无论使用哪种连接池，springboot都会优先读取这一层的username/password
+#    username: root
+#    password: Yinxl_123
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    # hikari:
+#    #   # 底层连接池（HikariCP）专属配置项。
+#    #   # 会覆盖上层的通用配置
+#    #   username: root
+#    #   password: Yinxl_123
